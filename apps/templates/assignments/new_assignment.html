@@ -1,0 +1,80 @@
+{% extends "layouts/base.html" %}
+
+{% block title %} UI Tables {% endblock %}
+
+<!-- Specific CSS goes HERE -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+<div class="pcoded-content">
+    <div class="pcoded-inner-content">
+        <!-- [ breadcrumb ] start -->
+        <div class="page-header">
+            <div class="page-block">
+                <div class="row align-items-center">
+                    <div class="col-md-12">
+                        <!-- <div class="page-header-title">
+                            <h5 class="m-b-10">Opportunities</h5>
+                        </div> -->
+                        <ul class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="index.html"><i class="feather icon-home"></i></a></li>
+                            <!-- <li class="breadcrumb-item"><a href="#!">Tables</a></li>
+                            <li class="breadcrumb-item"><a href="javascript:">Basic Tables</a></li> -->
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- [ breadcrumb ] end -->
+
+        <div class="main-body">
+            <div class="page-wrapper">
+                <!-- [ Main Content ] start -->
+                <div class="row">
+                    <!-- [ basic-table ] start -->
+
+                    <form role="form" method="post" action="">
+
+                        {% csrf_token %}                    
+
+                        <div class="input-group mb-3">
+                            <input class="form-control" placeholder="Name">
+                        </div>
+                        <div class="input-group mb-3">
+                            <input class="form-control" placeholder="Project">
+                        </div>
+                        <div class="input-group mb-3">
+                            <input class="data-toggle" placeholder="Start date">
+                        </div>
+                        <div class="input-group mb-3">
+                            <input class="data-toggle" placeholder="End date">
+                        </div>
+                        <div class="dropdown">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                              Employee
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                {% for item in emps %}
+                                    <a class="dropdown-item" href="#">{{item.name}}</a>
+                                {% endfor %}
+                            </div>
+                          </div>
+                        
+                        <button type="submit" name="register" class="btn btn-primary shadow-2 mb-4">Save</button>
+
+                    </form>
+                    <!-- [ basic-table ] end -->
+
+
+                </div>
+                <!-- [ Main Content ] end -->
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}{% endblock javascripts %}
