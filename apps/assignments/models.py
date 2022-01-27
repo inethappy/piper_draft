@@ -21,7 +21,6 @@ class TeamAssignment(models.Model):
 class Assignment(models.Model):
     id = models.BigAutoField(primary_key=True)
     name = models.CharField(max_length=100)
-    # opportunity = models.ForeignKey(Opportunities, models.DO_NOTHING, related_name='opportunity')
     employee = models.ForeignKey(Employee, models.DO_NOTHING)
     status = models.CharField(max_length=100, blank=True, null=True)
     role = models.CharField(max_length=100, blank=True, null=True)

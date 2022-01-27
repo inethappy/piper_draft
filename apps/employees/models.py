@@ -1,6 +1,6 @@
 from django.db import models
 # from apps.opportunities.models import Opportunity
-
+from django.contrib.auth.models import User
 
 class Employee(models.Model):
     id = models.BigAutoField(primary_key=True)
@@ -12,6 +12,7 @@ class Employee(models.Model):
     employee_type = models.TextField(max_length=100, blank=True, null=True)
     employee_status = models.TextField(max_length=100, blank=True, null=True)
     reporting_to = models.ForeignKey('self', models.DO_NOTHING, db_column='reporting_to', blank=True, null=True)
+    user = models.OneToOneField(User, on_delete=models.SET_NULL, null=True)
 
     class Meta:
         db_table = 'employee'

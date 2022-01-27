@@ -8,6 +8,7 @@ import requests
 from apps.assignments.forms import TeamAssignmentForm, AssignmentForm
 
 from apps.assignments.models import Assignment, TeamAssignment
+from apps.employees.models import Employee
 from .models import Opportunity
 from django.shortcuts import render, redirect
 
@@ -81,6 +82,14 @@ class OpportunityEdit(UpdateView):
 class OpportunityList(ListView):
     model = Opportunity
     context_object_name = 'opps_list'
-    queryset = Opportunity.objects.all()
     template_name = 'opportunities/opps.html'
 
+    def get_queryset(self):
+        """
+        Filter objects so a user only sees his own stuff.
+        """
+        if self.request.user.has_perm('opportunities.view_only_assigned_opportunities'):
+            user = Employee.objects.filter(user=self.request.user)[0]
+            return Opportunity.objects.filter(scoping_lead=user)
+        else:
+            return Opportunity.objects.all()
