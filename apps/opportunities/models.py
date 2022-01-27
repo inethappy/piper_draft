@@ -34,13 +34,6 @@ class Opportunity(models.Model):
     # additional_scoping_team = models.ManyToManyField(Assignment)
     weekly_check_ins = models.ManyToManyField(WeeklyCheckIn, blank=True)
 
-# FE Team Members (with optional resource specific start date)
-# BE Team Members (with optional resource specific start date)
-# Data/ML Team Members (with optional resource specific start date)
-# DevOps Team Members (with optional resource specific start date)
-# QA Team Members (with optional resource specific start date)
-# UI/UX Team Members (with optional resource specific start date)
-
 # Estimated Timeline
 # Potential Resource Types Needed
 

@@ -88,7 +88,7 @@ class OpportunityList(ListView):
         """
         Filter objects so a user only sees his own stuff.
         """
-        if self.request.user.has_perm('opportunities.view_only_assigned_opportunities'):
+        if self.request.user.has_perm('opportunities.view_only_assigned_opportunities') and not self.request.user.is_superuser:
             user = Employee.objects.filter(user=self.request.user)[0]
             return Opportunity.objects.filter(scoping_lead=user)
         else:
